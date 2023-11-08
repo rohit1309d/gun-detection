@@ -18,20 +18,19 @@ pip install -e .
 ## Data
 We use images from three datasets : 
 
-1. Monash Gun dataset (MGD) [^1]
-2. US Real-time Gun detection dataset (USRT) [^2] 
-3. UCF Crime scene dataset (UCF) [^3] 
+1. Youtube Images
+2. US Real-time Gun detection dataset (USRT)
 
 Instructions on how to download these datasets can be found in [dataset_instructions.md](./dataset_instructions.md) .
 
 ## Setup
 
 We perform two kinds of assessment : Intra-dataset and Cross-dataset (See paper for more details). We train five detection models : 
-- Faster R-CNN [^4]
-- Swin-T [^5]
-- Deformable DETR [^6]
-- DetectoRS [^7]
-- ConvNeXt-T [^8]
+- Faster R-CNN
+- Swin-T
+- Deformable DETR 
+- DetectoRS
+- ConvNeXt-T
 
 ## Training
 
@@ -95,63 +94,3 @@ python tools/test.py --config configs/gun_detection/convnext.py --dataset-config
 ```
 
 To save the bounding box predictions on test set , add `--save-path <path/to/output/folder>` to the above command.
-
-## Citations
-
-Please consider citing the following references in your publications if it helps your research
-
-```
-@misc{yellapragada2023cctvgun,
-      title={CCTV-Gun: Benchmarking Handgun Detection in CCTV Images}, 
-      author={Srikar Yellapragada and Zhenghong Li and Kevin Bhadresh Doshi and Purva Makarand Mhasakar and Heng Fan and Jie Wei and Erik Blasch and Haibin Ling},
-      year={2023},
-      eprint={2303.10703},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
-}
-
-@article{lim2021deep,
-  title={Deep multi-level feature pyramids: Application for non-canonical firearm detection in video surveillance},
-  author={Lim, JunYi and Al Jobayer, Md Istiaque and Baskaran, Vishnu Monn and Lim, Joanne MunYee and See, John and Wong, KokSheik},
-  journal={Engineering applications of artificial intelligence},
-  volume={97},
-  pages={104094},
-  year={2021},
-  publisher={Elsevier}
-}
-
-@article{gonzalez2020real,
-  title={Real-time gun detection in CCTV: An open problem},
-  author={Gonz{\'a}lez, Jose L Salazar and Zaccaro, Carlos and {\'A}lvarez-Garc{\'\i}a, Juan A and Morillo, Luis M Soria and Caparrini, Fernando Sancho},
-  journal={Neural networks},
-  volume={132},
-  pages={297--308},
-  year={2020},
-  publisher={Elsevier}
-}
-
-@inproceedings{sultani2018real,
-  title={Real-world anomaly detection in surveillance videos},
-  author={Sultani, Waqas and Chen, Chen and Shah, Mubarak},
-  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
-  pages={6479--6488},
-  year={2018}
-}
-```
-## References
-
-[^1]: Lim, JunYi, et al. "Deep multi-level feature pyramids: Application for non-canonical firearm detection in video surveillance." Engineering applications of artificial intelligence 97 (2021): 104094.
-
-[^2]: González, Jose L. Salazar, et al. "Real-time gun detection in CCTV: An open problem." Neural networks 132 (2020): 297-308.
-
-[^3]: Sultani, Waqas, Chen Chen, and Mubarak Shah. "Real-world anomaly detection in surveillance videos." Proceedings of the IEEE conference on computer vision and pattern recognition. 2018.
-
-[^4]: Ren, Shaoqing, et al. "Faster r-cnn: Towards real-time object detection with region proposal networks." Advances in neural information processing systems 28 (2015).
-
-[^5]: Liu, Ze, et al. "Swin transformer: Hierarchical vision transformer using shifted windows." Proceedings of the IEEE/CVF international conference on computer vision. 2021.
-
-[^6]: Zhu, Xizhou, et al. "Deformable detr: Deformable transformers for end-to-end object detection." arXiv preprint arXiv:2010.04159 (2020).
-
-[^7]: Qiao, Siyuan, Liang-Chieh Chen, and Alan Yuille. "Detectors: Detecting objects with recursive feature pyramid and switchable atrous convolution." Proceedings of the IEEE/CVF conference on computer vision and pattern recognition. 2021.
-
-[^8]: Liu, Zhuang, et al. "A convnet for the 2020s." Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2022.
