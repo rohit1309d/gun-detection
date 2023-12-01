@@ -20,7 +20,8 @@ runner = dict(max_epochs=36)
 evaluation = dict(
     metric = "bbox",
     interval = 1,
-    save_best = 'bbox_h_mAP',
-    rule = "greater"
+    save_best = 'bbox_p_mAP',
+    rule = "greater",
+    classwise=True
 )
 auto_scale_lr = dict(enable=True, base_batch_size=8)

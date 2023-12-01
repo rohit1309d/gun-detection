@@ -148,10 +148,10 @@ class COCOevalHOI(COCOeval):
                 titleStr = 'Average Recall'
                 typeStr = '(AR)'
             elif ap == 2:
-                titleStr = 'Handgun AP'
+                titleStr = 'Holder AP'
                 typeStr = '(AP)'
             elif ap == 3:
-                titleStr = 'Person AP'
+                titleStr = 'Gun AP'
                 typeStr = '(AP)'
             iouStr = '{:0.2f}:{:0.2f}'.format(p.iouThrs[0], p.iouThrs[-1]) \
                 if iouThr is None else '{:0.2f}'.format(iouThr)

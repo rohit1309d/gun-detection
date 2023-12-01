@@ -18,8 +18,9 @@ model = dict(
 evaluation = dict(
     metric = "bbox",
     interval = 1,
-    save_best = 'bbox_h_mAP',
-    rule = "greater"
+    save_best = 'bbox_p_mAP',
+    rule = "greater",
+    classwise=True
 )
 
 lr_config = dict(warmup_iters=1000, step=[27, 33])

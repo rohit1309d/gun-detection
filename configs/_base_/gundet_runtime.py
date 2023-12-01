@@ -5,7 +5,7 @@ total_epochs = 36
 evaluation = dict(
     metric = "bbox",
     interval = 1,
-    save_best = 'bbox_h_mAP',
+    save_best = 'bbox_p_mAP',
     rule = "greater"
 )
 
