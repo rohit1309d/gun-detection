@@ -1,5 +1,5 @@
 ## Introduction
-This repo contains training and evaluation code of CCTV-GUN benchmark. It uses [mmdetection](https://mmdetection.readthedocs.io/en/latest/) to train object detection models. Our arXiv submission can be found [here](https://arxiv.org/abs/2303.10703).
+This repo contains training and evaluation code of CCTV-GUN benchmark. It uses [mmdetection](https://mmdetection.readthedocs.io/en/latest/) to train object detection models.
 
 
 ## Requirements
@@ -22,15 +22,6 @@ We use images from three datasets :
 2. US Real-time Gun detection dataset (USRT)
 
 Instructions on how to download these datasets can be found in [dataset_instructions.md](./dataset_instructions.md) .
-
-## Setup
-
-We perform two kinds of assessment : Intra-dataset and Cross-dataset (See paper for more details). We train five detection models : 
-- Faster R-CNN
-- Swin-T
-- Deformable DETR 
-- DetectoRS
-- ConvNeXt-T
 
 ## Training
 
@@ -57,21 +48,10 @@ After you create an account in wandb, change `entity` and `project` in [train.py
 ```
 ### Examples:
 
-Train a Swin-T on MGD (Intra-dataset)
+Train a Swin-T on Ytimgs (Intra-dataset)
 ```bash
-python tools/train.py --config configs/gun_detection/swin_transformer.py --dataset-config configs/_base_/datasets/gun_detection/mgd.py --cfg-options data.samples_per_gpu=6
+python tools/train.py --config configs/gun_detection/swin_transformer.py --dataset-config configs/_base_/datasets/gun_detection/ytimgs.py --cfg-options data.samples_per_gpu=6
 ```
-
-Train a detectoRS model on MGD+USRT (Inter-dataset)
-```bash
-python tools/train.py --config configs/gun_detection/detectors.py --dataset-config configs/_base_/datasets/gun_detection/mgd_usrt.py --cfg-options data.samples_per_gpu=4
-```
-
-Fine-tune MGD+USRT trained Deformable-DETR model on UCF (Inter-dataset)
-```bash
-python tools/train.py --config configs/gun_detection/deformable_detr.py --dataset-config configs/_base_/datasets/gun_detection/ucf.py --cfg-options data.samples_per_gpu=6 --load-from <path/to/trained/model.pth>
-```
-
 
 ## Testing
 To evaluate a trained model, run
@@ -81,16 +61,10 @@ python tools/test.py --config <path/to/model/config.py> --dataset-config <path/t
 
 ### Examples:
 
-Evaluate a faster-rcnn trained on MGD on MGD's test set (Intra-dataset)
+Evaluate a ConvNeXt trained on USRT
 
 ```bash
-python tools/test.py --config configs/gun_detection/faster_rcnn.py --dataset-config configs/_base_/datasets/gun_detection/mgd.py --checkpoint <path/to/mgd/trained/model.pth> --work-dir <path/to/save/test/scores> --eval bbox
-```
-
-Evaluate a ConvNeXt trained on MGD+USRT on the entirety of UCF (Inter-dataset) 
-
-```bash
-python tools/test.py --config configs/gun_detection/convnext.py --dataset-config configs/_base/datasets/gun_detection/ucf_test_full.py --checkpoint <path/to/mgd+usrt/trained/model.pth> --work-dir <path/to/save/test/scores> --eval bbox
+python tools/test.py --config configs/gun_detection/convnext.py --dataset-config configs/_base/datasets/gun_detection/usrt.py --checkpoint <path/to/mgd+usrt/trained/model.pth> --work-dir <path/to/save/test/scores> --eval bbox
 ```
 
 To save the bounding box predictions on test set , add `--save-path <path/to/output/folder>` to the above command.
