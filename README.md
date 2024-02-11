@@ -1,5 +1,5 @@
 ## Introduction
-This repo contains training and evaluation code of CCTV-GUN benchmark. It uses [mmdetection](https://mmdetection.readthedocs.io/en/latest/) to train object detection models.
+This repo contains training and evaluation code of CCTV-GUN model. It uses [mmdetection](https://mmdetection.readthedocs.io/en/latest/) to train object detection models.
 
 
 ## Requirements
